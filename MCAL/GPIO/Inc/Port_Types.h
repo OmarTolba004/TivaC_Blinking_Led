@@ -108,6 +108,7 @@ typedef struct
 	Port_PinInternalAttachType pinInternalAttachType;
 	Port_PinOutputCurrentType pinOutputCurrentType;
 	Port_EnableType enableType;
+	Port_PinLevelType pinLevelType;
 }Port_ConfigType;
 
 typedef struct
