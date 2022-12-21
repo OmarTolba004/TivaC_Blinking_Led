@@ -83,7 +83,6 @@ void Port_Init(const Port_ConfigTypeArray *ConfigPtr)
             break;
         case PORT_F:
             portIndex = F;
-
             break;
         }
 
