@@ -44,8 +44,11 @@
 #define NVIC_UNPEND3 (*((volatile NVIC_UNPEND_Type *)(CORTEX_M4_CORE_PERIPHERAL_BASE_ADDRESS + 0x28C)))
 #define NVIC_UNPEND4 (*((volatile NVIC_UNPEND4_Type *)(CORTEX_M4_CORE_PERIPHERAL_BASE_ADDRESS + 0x290)))
 /* this macro gets number of interrupt and return refrenced pointer to need PRI register*/
-#define NVIC_PRI(x) (*((volatile uint32 *)(((((x / 4) * 4) + 0x400) + 0xE000E000))))
-#define SCB_APINT   (*((volatile SCB_APINT_Type *)(CORTEX_M4_CORE_PERIPHERAL_BASE_ADDRESS + 0xD0C)))
+#define NVIC_PRI(x) (*((volatile NVIC_PRI_Type *)(((((x / 4) * 4) + 0x400) + 0xE000E000))))
+#define SCB_APINT (*((volatile SCB_APINT_Type *)(CORTEX_M4_CORE_PERIPHERAL_BASE_ADDRESS + 0xD0C)))
+#define SCB_SYSPRI1 (*(volatile SCB_SYSPRI1_Type *)(CORTEX_M4_CORE_PERIPHERAL_BASE_ADDRESS + 0xD18))
+#define SCB_SYSPRI2 (*(volatile SCB_SYSPRI2_Type *)(CORTEX_M4_CORE_PERIPHERAL_BASE_ADDRESS + 0xD1C))
+#define SCB_SYSPRI3 (*(volatile SCB_SYSPRI3_Type *)(CORTEX_M4_CORE_PERIPHERAL_BASE_ADDRESS + 0xD20))
 
 /**********************************************************************************************************************
  *  GLOBAL DATA PROTOTYPES
@@ -216,6 +219,69 @@ typedef union
     uint32 REG;
     SCB_APINT_BF BF;
 } SCB_APINT_Type;
+
+typedef struct
+{
+    uint32 reserverd_00 : 5;
+    uint32 MEM : 3;
+    uint32 reserverd_01 : 5;
+    uint32 BUS : 3;
+    uint32 reserverd_02 : 5;
+    uint32 USAGE : 3;
+    uint32 : 0;
+} SCB_SYSPRI1_BF;
+
+typedef union
+{
+    uint32 REG;
+    SCB_SYSPRI1_BF BF;
+} SCB_SYSPRI1_Type;
+
+typedef struct
+{
+    uint32 reserverd_00 : 29;
+    uint32 SVC : 3;
+} SCB_SYSPRI2_BF;
+
+typedef union
+{
+    uint32 REG;
+    SCB_SYSPRI2_BF BF;
+} SCB_SYSPRI2_Type;
+
+typedef struct
+{
+    uint32 reserverd_00 : 5;
+    uint32 DEBUG : 3;
+    uint32 reserverd_01 : 13;
+    uint32 PENDSV : 3;
+    uint32 reserverd_02 : 5;
+    uint32 TICK : 3;
+} SCB_SYSPRI3_BF;
+
+typedef union
+{
+    uint32 REG;
+    SCB_SYSPRI3_BF BF;
+} SCB_SYSPRI3_Type;
+
+typedef struct
+{
+    uint32 reserverd_00 : 5;
+    uint32 INTA : 3;
+    uint32 reserverd_00 : 5;
+    uint32 INTB : 3;
+    uint32 reserverd_00 : 5;
+    uint32 INTC : 3;
+    uint32 reserverd_00 : 5;
+    uint32 INTD : 3;
+} NVIC_PRI_BF;
+
+typedef union
+{
+    uint32 REG;
+    NVIC_PRI_BF BF;
+} NVIC_PRI_Type;
 
 #endif /* INTCTRL_REGS_H */
 /**********************************************************************************************************************

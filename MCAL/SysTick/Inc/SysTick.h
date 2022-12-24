@@ -11,7 +11,7 @@
  *	Date:		  20/12/2022
  *********************************************************************************************************************/
 
-#ifndef SYSTICK_H 
+#ifndef SYSTICK_H
 #define SYSTICK_H
 
 /**********************************************************************************************************************
@@ -35,7 +35,7 @@
  * Return value: None
  * Description: Function to Init SysTick Driver
  *******************************************************************************/
-void SysTick_Init(SysTick_LoadValueType LoadValue) ;
+void SysTick_Init(SysTick_LoadValueType LoadValue);
 
 /*******************************************************************************
  * Service Name: SysTick_Set_CallBack

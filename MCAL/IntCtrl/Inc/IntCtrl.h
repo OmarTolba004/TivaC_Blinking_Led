@@ -21,8 +21,22 @@
 
 
 /**********************************************************************************************************************
- *  GLOBAL DATA PROTOTYPES
+ *  FUNCTION PROTOTYPES
  *********************************************************************************************************************/
+
+/*******************************************************************************
+ * Service Name: IntCtrl_Init
+ * Service ID[hex]: 0x00
+ * Sync/Async: Synchronous
+ * Reentrancy: Reentrant
+ * Parameters (in): None
+ * Parameters (inout): None
+ * Parameters (out): None
+ * Return value: None
+ * Description: Function to initialize interrupts and exceptions
+ */
+void IntCtrl_Init(void);
+
 
 #endif /* INTCTRL_H */
 /**********************************************************************************************************************
